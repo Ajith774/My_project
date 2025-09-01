@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -x
+
+service="tomcat ngnix apache2"
+admin=admin@gmail.com
+
+for i in $service
+do
+
+   sudo service $i status
+
+   if [ $? -ne 0 ]
+  then
+
+  echo "$service is stopped, take the necessary actions" | mail -s "$service status" $admin
+
+ fi
+
+ done
+
+

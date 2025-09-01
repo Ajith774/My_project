@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -x
+
+
+CPU_IDL=$(top -bn1 | grep "CPU(s)" | awk "{print $8}')
+CPU_USAGE=(100-CPU_IDL)%
+
+Threshold=50%
+
+if [ $CPU_USAGE -gt $Threshold ]
+then 
+    
+    echo "CPU usage is more than the threshold level, please take the nesecceary actions" | mail -s "cpu usage" admin@gmail.com -c ajith@gmail.com
+
+
+ fi
