@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -x
+
+ADMIN=admin@gmail.com
+COPY=ajith@gamil.com
+
+disc-usage=$(df -h | tail -2 |awk '{ print $3}' )
+
+threshold=80%
+
+if [ $disc-usage -gt $threshold ]
+then
+
+
+    echo "disc usage crossed threshold value, current usage is $disc-usage, please take the necessary actions" | mail -s "disc usage" $ADMIN -c $copy
+
+fi
+
